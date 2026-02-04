@@ -1,0 +1,42 @@
+{
+  "template_name": "Employment Agreement Template",
+  "description": "Standard employment contract for Indian SMEs",
+  "applicable_laws": [
+    "Indian Contract Act, 1872",
+    "Payment of Wages Act, 1936",
+    "Shops and Establishments Act",
+    "Industrial Disputes Act, 1947"
+  ],
+  "key_clauses": [
+    {
+      "clause_name": "Position and Duties",
+      "importance": "HIGH",
+      "description": "Clearly defines job role, responsibilities, and reporting structure"
+    },
+    {
+      "clause_name": "Compensation",
+      "importance": "HIGH",
+      "description": "Salary, benefits, and payment terms"
+    },
+    {
+      "clause_name": "Working Hours",
+      "importance": "MEDIUM",
+      "description": "Defines standard working hours and overtime policy"
+    },
+    {
+      "clause_name": "Termination",
+      "importance": "HIGH",
+      "description": "Notice period and termination conditions"
+    },
+    {
+      "clause_name": "Confidentiality",
+      "importance": "HIGH",
+      "description": "Protection of company confidential information"
+    }
+  ],
+  "recommended_terms": {
+    "notice_period": "30-90 days",
+    "probation_period": "3-6 months",
+    "non_compete_duration": "6-12 months"
+  }
+}

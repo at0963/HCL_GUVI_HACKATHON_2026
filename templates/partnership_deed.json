@@ -1,0 +1,50 @@
+{
+  "template_name": "Partnership Deed Template",
+  "description": "Agreement for business partnership under Indian Partnership Act",
+  "applicable_laws": [
+    "Indian Partnership Act, 1932",
+    "Indian Contract Act, 1872"
+  ],
+  "key_clauses": [
+    {
+      "clause_name": "Partners and Firm Name",
+      "importance": "HIGH",
+      "description": "Names of partners and name of partnership firm"
+    },
+    {
+      "clause_name": "Business Nature",
+      "importance": "HIGH",
+      "description": "Description of business activities"
+    },
+    {
+      "clause_name": "Capital Contribution",
+      "importance": "HIGH",
+      "description": "Initial capital contribution by each partner"
+    },
+    {
+      "clause_name": "Profit and Loss Sharing",
+      "importance": "HIGH",
+      "description": "Ratio for sharing profits and losses"
+    },
+    {
+      "clause_name": "Management and Decision Making",
+      "importance": "HIGH",
+      "description": "Authority and decision-making process"
+    },
+    {
+      "clause_name": "Admission/Retirement",
+      "importance": "MEDIUM",
+      "description": "Process for adding or removing partners"
+    },
+    {
+      "clause_name": "Dissolution",
+      "importance": "HIGH",
+      "description": "Terms and process for dissolving partnership"
+    }
+  ],
+  "recommended_terms": {
+    "profit_sharing": "As per capital contribution or equal",
+    "decision_making": "Unanimous or majority vote",
+    "dissolution_notice": "3-6 months"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "template_name": "Service Agreement Template",
+  "description": "Professional services contract for consultants and service providers",
+  "applicable_laws": [
+    "Indian Contract Act, 1872",
+    "Information Technology Act, 2000",
+    "Copyright Act, 1957"
+  ],
+  "key_clauses": [
+    {
+      "clause_name": "Scope of Services",
+      "importance": "HIGH",
+      "description": "Detailed description of services to be provided"
+    },
+    {
+      "clause_name": "Deliverables",
+      "importance": "HIGH",
+      "description": "Specific deliverables and acceptance criteria"
+    },
+    {
+      "clause_name": "Fees and Payment",
+      "importance": "HIGH",
+      "description": "Fee structure and payment milestones"
+    },
+    {
+      "clause_name": "Intellectual Property",
+      "importance": "HIGH",
+      "description": "Ownership of work product and IP rights"
+    },
+    {
+      "clause_name": "Confidentiality",
+      "importance": "HIGH",
+      "description": "Protection of confidential information"
+    }
+  ],
+  "recommended_terms": {
+    "payment_schedule": "Milestone-based or monthly",
+    "ip_ownership": "Client owns final deliverables",
+    "termination_notice": "30 days"
+  }
+}

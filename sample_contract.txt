@@ -1,0 +1,204 @@
+SERVICE AGREEMENT
+
+This Service Agreement ("Agreement") is entered into on January 15, 2026, between:
+
+SERVICE PROVIDER: TechSolutions India Private Limited, a company incorporated under the Companies Act, 2013, having its registered office at 123 Business Park, Bangalore, Karnataka 560001 (hereinafter referred to as the "Service Provider")
+
+AND
+
+CLIENT: ABC Enterprises, a partnership firm registered in Mumbai, Maharashtra, having its principal place of business at 456 Commercial Street, Mumbai, Maharashtra 400001 (hereinafter referred to as the "Client")
+
+WHEREAS, the Service Provider specializes in providing software development and IT consulting services, and the Client desires to engage the Service Provider for certain services as described herein.
+
+NOW, THEREFORE, in consideration of the mutual covenants and agreements set forth herein, the parties agree as follows:
+
+1. SCOPE OF SERVICES
+
+1.1 The Service Provider shall provide the following services to the Client:
+    a) Custom software development for inventory management system
+    b) Website design and development services
+    c) IT infrastructure consulting
+    d) Technical support and maintenance
+
+1.2 The Service Provider shall use reasonable efforts to perform the services in a professional and timely manner.
+
+2. DELIVERABLES
+
+2.1 The Service Provider shall deliver the following:
+    - Functional inventory management software within 90 days
+    - Responsive website within 45 days
+    - Infrastructure assessment report within 30 days
+    - Monthly maintenance reports
+
+2.2 All deliverables are subject to Client's approval and acceptance within 7 business days of delivery.
+
+3. FEES AND PAYMENT TERMS
+
+3.1 Total project fee is INR 15,00,000 (Fifteen Lakh Rupees only).
+
+3.2 Payment schedule:
+    - 40% advance payment upon signing: INR 6,00,000
+    - 30% upon 50% project completion: INR 4,50,000
+    - 30% upon final delivery and acceptance: INR 4,50,000
+
+3.3 All payments shall be made via bank transfer within 15 days of invoice.
+
+3.4 Late payments shall attract interest at 18% per annum.
+
+3.5 Service Provider may suspend services if payment is delayed by more than 30 days.
+
+4. PROJECT TIMELINE
+
+4.1 Project commencement date: February 1, 2026
+4.2 Expected completion date: July 31, 2026
+4.3 Timeline extensions require written approval from both parties.
+
+5. INTELLECTUAL PROPERTY RIGHTS
+
+5.1 All intellectual property created specifically for this project shall be owned exclusively by the Client upon full payment.
+
+5.2 Service Provider retains rights to pre-existing intellectual property, general methodologies, and frameworks.
+
+5.3 Client grants Service Provider permission to use project as portfolio reference with prior written consent.
+
+6. CONFIDENTIALITY
+
+6.1 Both parties agree to maintain strict confidentiality of all proprietary information shared during the engagement.
+
+6.2 Confidential information includes but is not limited to business plans, technical specifications, client data, and financial information.
+
+6.3 Confidentiality obligations shall survive termination of this Agreement for a period of 3 years.
+
+6.4 Breach of confidentiality may result in immediate termination and legal action.
+
+7. WARRANTIES AND REPRESENTATIONS
+
+7.1 Service Provider warrants that:
+    - Services will be performed with reasonable skill and care
+    - Deliverables will be free from material defects for 6 months
+    - Work will not infringe on third-party intellectual property rights
+
+7.2 CLIENT ACKNOWLEDGES THAT SERVICE PROVIDER MAKES NO OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY OR FITNESS FOR PARTICULAR PURPOSE.
+
+8. LIMITATION OF LIABILITY
+
+8.1 Service Provider's total liability under this Agreement shall not exceed the total fees paid by Client.
+
+8.2 IN NO EVENT SHALL SERVICE PROVIDER BE LIABLE FOR INDIRECT, CONSEQUENTIAL, INCIDENTAL, OR PUNITIVE DAMAGES.
+
+8.3 Service Provider shall not be liable for delays or failures due to circumstances beyond reasonable control.
+
+9. INDEMNIFICATION
+
+9.1 Client agrees to indemnify and hold harmless Service Provider from any claims arising from Client's use of the deliverables or breach of this Agreement.
+
+9.2 Service Provider agrees to indemnify Client against claims of intellectual property infringement arising from the deliverables.
+
+10. TERMINATION
+
+10.1 Either party may terminate this Agreement with 30 days written notice.
+
+10.2 Client may terminate immediately upon material breach by Service Provider if not cured within 15 days of written notice.
+
+10.3 Service Provider may terminate immediately if Client fails to make payment for more than 45 days.
+
+10.4 Upon termination, Client shall pay for all work completed up to the termination date.
+
+10.5 All confidentiality obligations shall survive termination.
+
+11. CHANGE REQUESTS
+
+11.1 Any changes to scope of work must be requested in writing.
+
+11.2 Service Provider shall provide cost and timeline estimates for changes within 5 business days.
+
+11.3 Changes shall be implemented only upon written approval and payment terms agreement.
+
+12. DISPUTE RESOLUTION
+
+12.1 Any disputes arising from this Agreement shall first be attempted to be resolved through good faith negotiations.
+
+12.2 If negotiations fail, disputes shall be resolved through arbitration under the Arbitration and Conciliation Act, 1996.
+
+12.3 Arbitration shall be conducted in Bangalore, Karnataka, with one arbitrator mutually agreed upon.
+
+12.4 The decision of the arbitrator shall be final and binding on both parties.
+
+13. FORCE MAJEURE
+
+13.1 Neither party shall be liable for failure to perform obligations due to events beyond reasonable control including natural disasters, acts of government, riots, strikes, or pandemics.
+
+13.2 Affected party must notify the other party within 7 days of force majeure event.
+
+13.3 If force majeure continues for more than 60 days, either party may terminate without penalty.
+
+14. GOVERNING LAW AND JURISDICTION
+
+14.1 This Agreement shall be governed by and construed in accordance with the laws of India.
+
+14.2 Subject to arbitration clause, courts at Bangalore, Karnataka shall have exclusive jurisdiction.
+
+15. GENERAL PROVISIONS
+
+15.1 This Agreement constitutes the entire agreement between the parties and supersedes all prior agreements.
+
+15.2 No modification of this Agreement shall be valid unless in writing and signed by both parties.
+
+15.3 If any provision is found invalid, the remaining provisions shall continue in full force.
+
+15.4 Neither party may assign this Agreement without prior written consent of the other party.
+
+15.5 Notices under this Agreement shall be sent via registered post or email to addresses specified herein.
+
+15.6 This Agreement may be executed in counterparts, each of which shall be deemed an original.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement on the date first written above.
+
+
+FOR SERVICE PROVIDER:                      FOR CLIENT:
+TechSolutions India Private Limited        ABC Enterprises
+
+Authorized Signatory: _________________    Authorized Signatory: _________________
+
+Name: Rajesh Kumar                         Name: Priya Sharma
+Designation: Director                      Designation: Partner
+
+Date: January 15, 2026                     Date: January 15, 2026
+
+Witness 1:                                 Witness 1:
+Name: _________________                    Name: _________________
+Signature: _____________                   Signature: _____________
+
+
+SCHEDULE A - DETAILED SPECIFICATIONS
+
+1. Inventory Management System Requirements:
+   - Multi-user access with role-based permissions
+   - Real-time stock tracking
+   - Barcode scanning integration
+   - Automated reorder alerts
+   - Reporting dashboard
+   - Mobile app compatibility
+
+2. Website Requirements:
+   - Responsive design (desktop, tablet, mobile)
+   - Content Management System
+   - Contact forms and inquiry management
+   - SEO optimization
+   - SSL certificate and security
+   - Social media integration
+
+3. IT Infrastructure Assessment:
+   - Network security audit
+   - Hardware and software inventory
+   - Cloud migration recommendations
+   - Backup and disaster recovery plan
+
+4. Technical Support:
+   - Email and phone support during business hours (9 AM - 6 PM IST)
+   - 24-hour response time for critical issues
+   - Monthly system health check-ups
+   - Quarterly software updates
+
+
+END OF AGREEMENT

@@ -1,0 +1,41 @@
+{
+  "template_name": "Lease Agreement Template",
+  "description": "Commercial property lease for office/retail space",
+  "applicable_laws": [
+    "Transfer of Property Act, 1882",
+    "Indian Contract Act, 1872",
+    "State Rent Control Acts"
+  ],
+  "key_clauses": [
+    {
+      "clause_name": "Property Description",
+      "importance": "HIGH",
+      "description": "Detailed description of leased premises"
+    },
+    {
+      "clause_name": "Lease Term",
+      "importance": "HIGH",
+      "description": "Duration of lease and renewal options"
+    },
+    {
+      "clause_name": "Rent and Deposit",
+      "importance": "HIGH",
+      "description": "Monthly rent, security deposit, and escalation"
+    },
+    {
+      "clause_name": "Maintenance",
+      "importance": "MEDIUM",
+      "description": "Responsibilities for maintenance and repairs"
+    },
+    {
+      "clause_name": "Use of Premises",
+      "importance": "MEDIUM",
+      "description": "Permitted use and restrictions"
+    }
+  ],
+  "recommended_terms": {
+    "lease_term": "11-36 months",
+    "security_deposit": "3-6 months rent",
+    "notice_period": "2-3 months"
+  }
+}

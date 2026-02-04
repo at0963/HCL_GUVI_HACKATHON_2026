@@ -1,0 +1,41 @@
+{
+  "template_name": "Vendor/Supplier Contract Template",
+  "description": "Standard agreement for procurement of goods or services",
+  "applicable_laws": [
+    "Indian Contract Act, 1872",
+    "Sale of Goods Act, 1930",
+    "Consumer Protection Act, 2019"
+  ],
+  "key_clauses": [
+    {
+      "clause_name": "Scope of Supply",
+      "importance": "HIGH",
+      "description": "Detailed description of goods/services to be supplied"
+    },
+    {
+      "clause_name": "Pricing",
+      "importance": "HIGH",
+      "description": "Price per unit, payment terms, and price revision clause"
+    },
+    {
+      "clause_name": "Delivery Terms",
+      "importance": "HIGH",
+      "description": "Delivery timeline, location, and acceptance criteria"
+    },
+    {
+      "clause_name": "Quality Standards",
+      "importance": "HIGH",
+      "description": "Quality specifications and inspection rights"
+    },
+    {
+      "clause_name": "Warranties",
+      "importance": "MEDIUM",
+      "description": "Warranty period and coverage"
+    }
+  ],
+  "recommended_terms": {
+    "payment_terms": "Net 30-60 days",
+    "warranty_period": "6-12 months",
+    "liability_cap": "Contract value"
+  }
+}
