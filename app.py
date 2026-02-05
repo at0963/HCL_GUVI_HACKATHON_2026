@@ -17,6 +17,26 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Download NLTK data on first run
+@st.cache_resource
+def download_nltk_data():
+    import nltk
+    import ssl
+    try:
+        _create_unverified_https_context = ssl._create_unverified_context
+    except AttributeError:
+        pass
+    else:
+        ssl._create_default_https_context = _create_unverified_https_context
+    
+    for data in ['punkt', 'stopwords', 'averaged_perceptron_tagger', 'maxent_ne_chunker', 'words']:
+        try:
+            nltk.data.find(f'tokenizers/{data}')
+        except LookupError:
+            nltk.download(data, quiet=True)
+
+download_nltk_data()
+
 @st.cache_resource
 def load_spacy():
     import spacy
