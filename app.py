@@ -1206,7 +1206,7 @@ def display_analysis_results(results, modules):
         if category_data:
             import pandas as pd
             df = pd.DataFrame(category_data)
-            st.dataframe(df, width='stretch')
+            st.dataframe(df, use_container_width=True)
         else:
             st.info("No significant risks identified by category.")
         
