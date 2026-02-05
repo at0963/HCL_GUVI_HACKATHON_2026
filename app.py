@@ -1383,7 +1383,7 @@ def display_analysis_results(results, modules):
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            if st.button("Generate Full PDF Report", width='stretch', type="primary"):
+            if st.button("Generate Full PDF Report", use_container_width=True, type="primary"):
                 with st.spinner("Generating PDF report..."):
                     try:
                         pdf_path = modules['report'].generate_full_report(results)
@@ -1401,7 +1401,7 @@ def display_analysis_results(results, modules):
                         st.error(f"Error generating PDF: {str(e)}")
         
         with col2:
-            if st.button("Generate Summary PDF", width='stretch'):
+            if st.button("Generate Summary PDF", use_container_width=True):
                 with st.spinner("Generating summary..."):
                     try:
                         pdf_path = modules['report'].generate_summary_report(results)
@@ -1413,13 +1413,13 @@ def display_analysis_results(results, modules):
                                 data=f,
                                 file_name=f"contract_summary_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
                                 mime="application/pdf",
-                                width='stretch'
+                                use_container_width=True
                             )
                     except Exception as e:
                         st.error(f"Error generating summary: {str(e)}")
         
         with col3:
-            if st.button("Export as JSON", width='stretch'):
+            if st.button("Export as JSON", use_container_width=True):
                 try:
                     json_path = modules['report'].export_to_json(results)
                     
@@ -1610,7 +1610,7 @@ def main():
             col1, col2 = st.columns([1, 3])
             
             with col1:
-                analyze_button = st.button("Analyze Contract", type="primary", width='stretch')
+                analyze_button = st.button("Analyze Contract", type="primary", use_container_width=True)
             
             with col2:
                 st.info("Analysis may take 30-60 seconds depending on contract size")
