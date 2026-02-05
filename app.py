@@ -81,6 +81,17 @@ css_code = f"""
     header {{visibility: hidden;}}
     .stDeployButton {{display: none;}}
     
+    /* Hide image fullscreen button */
+    button[title="View fullscreen"] {{
+        display: none !important;
+    }}
+    [data-testid="StyledFullScreenButton"] {{
+        display: none !important;
+    }}
+    [data-testid="stImage"] button {{
+        display: none !important;
+    }}
+    
     /* Remove all top spacing */
     .main > div:first-child {{
         padding-top: 0rem !important;
@@ -1452,7 +1463,13 @@ def main():
     
     with col_logo:
         try:
-            st.image("Images/logo.jpg", width=200)
+            import base64
+            with open("Images/logo.jpg", "rb") as f:
+                img_data = base64.b64encode(f.read()).decode()
+            st.markdown(
+                f'<img src="data:image/jpeg;base64,{img_data}" width="200">',
+                unsafe_allow_html=True
+            )
         except:
             pass  # If logo not found, continue without it
     
@@ -1786,13 +1803,25 @@ def main():
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Footer
-    st.markdown('''
-    <div class="app-footer">
-        <p>Your Legal Partner Across India.</p>
-        <p>© 2026 Adithya. All Rights Reserved.</p>
-        <p>Email: tsadithya24@gmail.com | Phone: +91-8300658690</p>
-    </div>
-    ''', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="app-footer">
+            <p>Your Legal Partner Across India.</p>
+            <p>© 2026. All Rights Reserved.</p>
+            <p>
+                Email:
+                <a href="mailto:tsadithya24@gmail.com">tsadithya24@gmail.com</a>
+                |
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/adithya-ts-570118212/" target="_blank">
+                    Adithya TS
+                </a>
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 
 
 if __name__ == "__main__":
