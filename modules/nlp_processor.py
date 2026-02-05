@@ -16,36 +16,19 @@ warnings.filterwarnings('ignore')
 
 class NLPProcessor:
     """Process text using spaCy and NLTK"""
-    
-    def __init__(self):
+
+    def __init__(self, nlp=None):
         """Initialize NLP models"""
-        # Download required NLTK data
-        self._download_nltk_data()
-        
-        # Load spaCy model
-        try:
-            self.nlp = spacy.load("en_core_web_sm")
-        except OSError:
-            print("Downloading spaCy model...")
-            import subprocess
-            subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-            self.nlp = spacy.load("en_core_web_sm")
-        
-        # Configure spaCy
-        self.nlp.max_length = 2000000  # Increase max length for large contracts
-        
-        # Initialize NLTK components
-        self.stop_words = set(stopwords.words('english'))
+        self.nlp = nlp
+        self.nlp.max_length = 2_000_000
+
+        # NLTK components (data already downloaded in setup.sh)
+        from nltk.corpus import stopwords
+        self.stop_words = set(stopwords.words("english"))
     
     def _download_nltk_data(self):
-        """Download required NLTK data"""
-        required_data = ['punkt', 'stopwords', 'averaged_perceptron_tagger', 'maxent_ne_chunker', 'words']
-        
-        for data in required_data:
-            try:
-                nltk.data.find(f'tokenizers/{data}')
-            except LookupError:
-                nltk.download(data, quiet=True)
+        """NLTK data already downloaded in setup.sh"""
+        pass
     
     def process_text(self, text: str) -> Dict:
         """

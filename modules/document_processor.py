@@ -6,7 +6,7 @@ import os
 import io
 from pathlib import Path
 from typing import Dict, Optional, Tuple
-import PyPDF2
+from PyPDF2 import PdfReader
 import pdfplumber
 from docx import Document
 import re
@@ -80,11 +80,11 @@ class DocumentProcessor:
                     if page_text:
                         text += page_text + "\n\n"
             
-            # If pdfplumber fails, fallback to PyPDF2
+            # If pdfplumber fails, fallback to pypdf
             if not text.strip():
-                metadata["extraction_method"] = "PyPDF2"
+                metadata["extraction_method"] = "pypdf"
                 with open(file_path, 'rb') as file:
-                    pdf_reader = PyPDF2.PdfReader(file)
+                    pdf_reader = PdfReader(file)
                     metadata["pages"] = len(pdf_reader.pages)
                     for page in pdf_reader.pages:
                         page_text = page.extract_text()

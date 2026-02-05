@@ -10,18 +10,9 @@ import spacy
 
 class EntityExtractor:
     """Extract contract-specific entities using pattern matching and NER"""
-    
-    def __init__(self, nlp_model=None):
-        """Initialize entity extractor"""
-        if nlp_model:
-            self.nlp = nlp_model
-        else:
-            try:
-                self.nlp = spacy.load("en_core_web_sm")
-            except OSError:
-                import subprocess
-                subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
-                self.nlp = spacy.load("en_core_web_sm")
+
+    def __init__(self, nlp):
+        self.nlp = nlp
     
     def extract_all_entities(self, text: str) -> Dict[str, List]:
         """

@@ -10,9 +10,9 @@ from modules.nlp_processor import NLPProcessor
 class ClauseAnalyzer:
     """Analyze contract clauses in detail"""
     
-    def __init__(self):
+    def __init__(self, nlp=None):
         """Initialize clause analyzer"""
-        self.nlp_processor = NLPProcessor()
+        self.nlp_processor = NLPProcessor(nlp)
         
         # Define clause type keywords
         self.clause_keywords = {

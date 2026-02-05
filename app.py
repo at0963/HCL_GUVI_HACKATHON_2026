@@ -8,26 +8,47 @@ from pathlib import Path
 from datetime import datetime
 import json
 
-# Import modules
-from modules.document_processor import DocumentProcessor
-from modules.nlp_processor import NLPProcessor
-from modules.entity_extractor import EntityExtractor
-from modules.clause_analyzer import ClauseAnalyzer
-from modules.contract_analyzer import ContractAnalyzer
-from modules.risk_assessor import RiskAssessor
-from modules.multilingual_handler import MultilingualHandler
-from modules.template_generator import TemplateGenerator
-from modules.report_generator import ReportGenerator
-
 import config
 
-# Page configuration
 st.set_page_config(
     page_title="Legal Assistant | Indian SMEs",
     page_icon="⚖️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
 )
+
+@st.cache_resource
+def load_spacy():
+    import spacy
+    return spacy.load("en_core_web_sm")
+
+@st.cache_resource
+def load_processors():
+    from modules.document_processor import DocumentProcessor
+    from modules.nlp_processor import NLPProcessor
+    from modules.entity_extractor import EntityExtractor
+    from modules.clause_analyzer import ClauseAnalyzer
+    from modules.contract_analyzer import ContractAnalyzer
+    from modules.risk_assessor import RiskAssessor
+    from modules.multilingual_handler import MultilingualHandler
+    from modules.template_generator import TemplateGenerator
+    from modules.report_generator import ReportGenerator
+
+    nlp = load_spacy()
+
+    return {
+        "doc": DocumentProcessor(),
+        "nlp": NLPProcessor(nlp),
+        "entity": EntityExtractor(nlp),
+        "clause": ClauseAnalyzer(nlp),
+        "contract": ContractAnalyzer(),
+        "risk": RiskAssessor(),
+        "lang": MultilingualHandler(),
+        "template": TemplateGenerator(),
+        "report": ReportGenerator(),
+    }
+
+processors = load_processors()
 
 # Enhanced Custom CSS
 
@@ -911,25 +932,6 @@ if 'uploaded_file_name' not in st.session_state:
     st.session_state.uploaded_file_name = None
 
 
-def initialize_modules():
-    """Initialize all modules"""
-    try:
-        modules = {
-            'doc_processor': DocumentProcessor(),
-            'nlp_processor': NLPProcessor(),
-            'entity_extractor': EntityExtractor(),
-            'clause_analyzer': ClauseAnalyzer(),
-            'risk_assessor': RiskAssessor(),
-            'multilingual_handler': MultilingualHandler(),
-            'template_generator': TemplateGenerator(),
-            'report_generator': ReportGenerator()
-        }
-        return modules
-    except Exception as e:
-        st.error(f"Error initializing modules: {str(e)}")
-        return None
-
-
 def analyze_contract(uploaded_file, modules):
     """Perform complete contract analysis"""
     
@@ -940,7 +942,7 @@ def analyze_contract(uploaded_file, modules):
         # Step 1: Process document
         status_text.markdown('<div class="progress-step">Step 1/7: Extracting text from document...</div>', unsafe_allow_html=True)
         progress_bar.progress(15)
-        doc_result = modules['doc_processor'].process_uploaded_file(uploaded_file)
+        doc_result = modules['doc'].process_uploaded_file(uploaded_file)
         
         if not doc_result['success']:
             st.error(f"Error processing document: {doc_result.get('error', 'Unknown error')}")
@@ -955,23 +957,23 @@ def analyze_contract(uploaded_file, modules):
         # Step 2: Detect language
         status_text.markdown('<div class="progress-step">Step 2/7: Detecting language...</div>', unsafe_allow_html=True)
         progress_bar.progress(25)
-        lang_info = modules['multilingual_handler'].detect_language(text)
+        lang_info = modules['lang'].detect_language(text)
         
         # Step 3: Extract entities
         status_text.markdown('<div class="progress-step">Step 3/7: Extracting contract entities...</div>', unsafe_allow_html=True)
         progress_bar.progress(40)
-        entities = modules['entity_extractor'].extract_all_entities(text)
+        entities = modules['entity'].extract_all_entities(text)
         
         # Step 4: Analyze clauses
         status_text.markdown('<div class="progress-step">Step 4/7: Analyzing contract clauses...</div>', unsafe_allow_html=True)
         progress_bar.progress(55)
-        clause_analysis = modules['clause_analyzer'].analyze_clauses(text)
+        clause_analysis = modules['clause'].analyze_clauses(text)
         
         # Step 5: LLM Analysis (if API key is configured)
         status_text.markdown('<div class="progress-step">Step 5/7: Performing AI-powered analysis...</div>', unsafe_allow_html=True)
         progress_bar.progress(70)
         try:
-            contract_analyzer = ContractAnalyzer()
+            contract_analyzer = modules['contract']
             
             # Classify contract
             classification = contract_analyzer.classify_contract_type(text)
@@ -995,13 +997,13 @@ def analyze_contract(uploaded_file, modules):
         # Step 6: Risk assessment
         status_text.markdown('<div class="progress-step">Step 6/7: Calculating risk scores...</div>', unsafe_allow_html=True)
         progress_bar.progress(85)
-        risk_assessment = modules['risk_assessor'].assess_contract_risk(clause_analysis, llm_risks)
+        risk_assessment = modules['risk'].assess_contract_risk(clause_analysis, llm_risks)
         
         # Identify unfavorable clauses
-        unfavorable_clauses = modules['clause_analyzer'].identify_unfavorable_clauses(clause_analysis)
+        unfavorable_clauses = modules['clause'].identify_unfavorable_clauses(clause_analysis)
         
         # Generate mitigation strategies
-        mitigation_strategies = modules['risk_assessor'].generate_risk_mitigation_strategies(risk_assessment)
+        mitigation_strategies = modules['risk'].generate_risk_mitigation_strategies(risk_assessment)
         
         # Generate negotiation points
         if unfavorable_clauses:
@@ -1364,7 +1366,7 @@ def display_analysis_results(results, modules):
             if st.button("Generate Full PDF Report", width='stretch', type="primary"):
                 with st.spinner("Generating PDF report..."):
                     try:
-                        pdf_path = modules['report_generator'].generate_full_report(results)
+                        pdf_path = modules['report'].generate_full_report(results)
                         st.success("Report generated successfully!")
                         
                         with open(pdf_path, 'rb') as f:
@@ -1382,7 +1384,7 @@ def display_analysis_results(results, modules):
             if st.button("Generate Summary PDF", width='stretch'):
                 with st.spinner("Generating summary..."):
                     try:
-                        pdf_path = modules['report_generator'].generate_summary_report(results)
+                        pdf_path = modules['report'].generate_summary_report(results)
                         st.success("Summary generated successfully!")
                         
                         with open(pdf_path, 'rb') as f:
@@ -1399,7 +1401,7 @@ def display_analysis_results(results, modules):
         with col3:
             if st.button("Export as JSON", width='stretch'):
                 try:
-                    json_path = modules['report_generator'].export_to_json(results)
+                    json_path = modules['report'].export_to_json(results)
                     
                     with open(json_path, 'r', encoding='utf-8') as f:
                         st.download_button(
@@ -1572,12 +1574,8 @@ def main():
     elif st.session_state.current_page == 'Analyze Contract':
         st.markdown('<div class="section-header">Upload and Analyze Your Contract</div>', unsafe_allow_html=True)
         
-        # Initialize modules
-        modules = initialize_modules()
-        
-        if modules is None:
-            st.error("Failed to initialize application modules. Please check your configuration.")
-            return
+        # Use cached processors
+        modules = processors
         
         # File upload
         uploaded_file = st.file_uploader(
@@ -1607,7 +1605,7 @@ def main():
                     st.session_state.uploaded_file_name = uploaded_file.name
                     
                     # Create audit log
-                    modules['report_generator'].create_audit_log(results)
+                    modules['report'].create_audit_log(results)
         
         # Display results if available
         if st.session_state.analysis_results:
@@ -1619,59 +1617,58 @@ def main():
     elif st.session_state.current_page == 'Generate Template':
         st.markdown('<div class="section-header">Generate Standard Contract Template</div>', unsafe_allow_html=True)
         
-        # Initialize modules
-        modules = initialize_modules()
+        # Use cached processors
+        modules = processors
         
-        if modules:
-            template_gen = modules['template_generator']
+        template_gen = modules['template']
+        
+        st.write("Generate SME-friendly contract templates compliant with Indian laws")
+        
+        # List available templates
+        templates = template_gen.list_available_templates()
+        
+        col1, col2 = st.columns([1, 2])
+        
+        with col1:
+            selected_template = st.selectbox(
+                "Select Template Type:",
+                options=[t['id'] for t in templates],
+                format_func=lambda x: next(t['name'] for t in templates if t['id'] == x)
+            )
+        
+        with col2:
+            template_info = next(t for t in templates if t['id'] == selected_template)
+            # Replace newlines with <br> for proper HTML rendering
+            description_html = template_info["description"].replace('\n', '<br>')
+            st.markdown(f'<div class="info-card"><strong>{template_info["name"]}</strong><br>{description_html}</div>', unsafe_allow_html=True)
+        
+        # Get required fields
+        required_fields = template_gen.get_template_fields(selected_template)
+        
+        if required_fields:
+            st.subheader("Customize Template")
             
-            st.write("Generate SME-friendly contract templates compliant with Indian laws")
+            custom_fields = {}
+            for field in required_fields:
+                field_label = field.replace('_', ' ').title()
+                custom_fields[field] = st.text_input(field_label, key=f"field_{field}")
+        else:
+            custom_fields = None
+        
+        if st.button("Generate Template", type="primary"):
+            template_text = template_gen.generate_template(selected_template, custom_fields)
             
-            # List available templates
-            templates = template_gen.list_available_templates()
+            st.success("Template generated successfully!")
             
-            col1, col2 = st.columns([1, 2])
+            st.text_area("Generated Template:", template_text, height=400)
             
-            with col1:
-                selected_template = st.selectbox(
-                    "Select Template Type:",
-                    options=[t['id'] for t in templates],
-                    format_func=lambda x: next(t['name'] for t in templates if t['id'] == x)
-                )
-            
-            with col2:
-                template_info = next(t for t in templates if t['id'] == selected_template)
-                # Replace newlines with <br> for proper HTML rendering
-                description_html = template_info["description"].replace('\n', '<br>')
-                st.markdown(f'<div class="info-card"><strong>{template_info["name"]}</strong><br>{description_html}</div>', unsafe_allow_html=True)
-            
-            # Get required fields
-            required_fields = template_gen.get_template_fields(selected_template)
-            
-            if required_fields:
-                st.subheader("Customize Template")
-                
-                custom_fields = {}
-                for field in required_fields:
-                    field_label = field.replace('_', ' ').title()
-                    custom_fields[field] = st.text_input(field_label, key=f"field_{field}")
-            else:
-                custom_fields = None
-            
-            if st.button("Generate Template", type="primary"):
-                template_text = template_gen.generate_template(selected_template, custom_fields)
-                
-                st.success("Template generated successfully!")
-                
-                st.text_area("Generated Template:", template_text, height=400)
-                
-                # Download button
-                st.download_button(
-                    label="Download Template",
-                    data=template_text,
-                    file_name=f"{selected_template}_{datetime.now().strftime('%Y%m%d')}.txt",
-                    mime="text/plain"
-                )
+            # Download button
+            st.download_button(
+                label="Download Template",
+                data=template_text,
+                file_name=f"{selected_template}_{datetime.now().strftime('%Y%m%d')}.txt",
+                mime="text/plain"
+            )
     
     # Page 3: Help & FAQ
     elif st.session_state.current_page == 'Help & FAQ':
